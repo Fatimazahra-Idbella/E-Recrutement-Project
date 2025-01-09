@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ErecrTest.Models.Offre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeContrat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Secteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Poste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remuneration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recruteur)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeContrat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Secteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Poste)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remuneration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recruteur.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
