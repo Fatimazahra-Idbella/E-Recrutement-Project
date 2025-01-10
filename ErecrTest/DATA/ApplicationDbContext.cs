@@ -32,6 +32,7 @@ namespace ErecrTest.DATA
 
 
         }
+        public DbSet<ErecrTest.Models.Candidat> Candidat { get; set; } = default!;
     }
 }
 
