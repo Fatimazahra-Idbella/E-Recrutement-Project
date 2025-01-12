@@ -1,8 +1,86 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Recruitment Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-5">
+        <h1>Welcome to Our Recruitment Platform</h1>
+        <p>Your dream job is just a few clicks away!</p>
+    </header>
+
+    <main class="container my-5">
+        <!-- Hero Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h2>Find Your Perfect Job</h2>
+                <p>We connect talented individuals with leading companies. Explore thousands of opportunities tailored to your skills and ambitions.</p>
+                <a href="/Jobs" class="btn btn-primary">Explore Jobs</a>
+            </div>
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/500x300" alt="Job search illustration" class="img-fluid rounded">
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <section class="my-5">
+            <h2 class="text-center mb-4">Why Choose Us?</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/150" alt="Feature 1" class="mb-3">
+                    <h4>Wide Job Selection</h4>
+                    <p>Discover opportunities across various industries and roles.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/150" alt="Feature 2" class="mb-3">
+                    <h4>Trusted Employers</h4>
+                    <p>We work with reputable companies to ensure a reliable job search experience.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/150" alt="Feature 3" class="mb-3">
+                    <h4>User-Friendly Platform</h4>
+                    <p>Easily navigate and apply for jobs with our intuitive interface.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="my-5 bg-light p-4 rounded">
+            <h2 class="text-center mb-4">What Our Users Say</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <blockquote class="blockquote">
+                        <p>"This platform helped me land my dream job in less than a month!"</p>
+                        <footer class="blockquote-footer">Jane Doe, Marketing Specialist</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="blockquote">
+                        <p>"The process was seamless and stress-free. Highly recommend it!"</p>
+                        <footer class="blockquote-footer">John Smith, Software Engineer</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <div class="text-center my-5">
+            <h2>Ready to Start Your Journey?</h2>
+            <a href="/Register" class="btn btn-success">Sign Up Now</a>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 Recruitment Platform. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

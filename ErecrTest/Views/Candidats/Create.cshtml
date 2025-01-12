@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Candidat</h4>
+
+<h1>Candidat</h1>
 <hr />
 <div class="row">
     <div class="col-md-10">
@@ -27,11 +27,11 @@
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" autocomplete="off">
                     </div>
                         <div>
-                            <label for="exampleInputNom" class="form-label mt-4">Nom</label>
+                            <label for="exampleInputNom" class="form-label mt-4">First mame</label>
                             <input type="nom" class="form-control" id="exampleInputNom" placeholder="Nom" autocomplete="off">
                         </div>
                         <div>
-                            <label for="exampleInputPrenom" class="form-label mt-4">Prenom</label>
+                            <label for="exampleInputPrenom" class="form-label mt-4">Last name</label>
                             <input type="prenom" class="form-control" id="exampleInputPrenom" placeholder="Prenom" autocomplete="off">
                         </div>
                         <div>
@@ -43,29 +43,29 @@
                            <input type="age" class="form-control" id="exampleInputAge" placeholder="Age" autocomplete="off">
                        </div>
                         <div>
-                            <label for="exampleInputDiplôme" class="form-label mt-4">Diplôme</label>
+                            <label for="exampleInputDiplôme" class="form-label mt-4">Diploma</label>
                             <input type="diplôme" class="form-control" id="exampleInputDiplôme" placeholder="Diplôme" autocomplete="off">
                         </div>
                         <div>
                             <label for="exampleInputNombre" class="form-label mt-4">
-                                Nombre
-                                année d’expérience
+                                Years of experience
                             </label>
                             <input type="nombre" class="form-control" id="exampleInputNombre" placeholder="Nombre" autocomplete="off">
                         </div>
                                    
                                    
                     <div>
-                        <label for="exampleTitre" class="form-label mt-4">Titre</label>
+                            <label for="exampleTitre" class="form-label mt-4">Professional title</label>
                         <select class="form-select" id="exampleTitre">
-                                <option>Ingénieur</option>
-                                <option>Chef de Projet</option>
-                                <option>Responsable RH</option>
-                                <option>Spécialiste SIG</option>
-                                <option>Administrateur Réseaux</option>
+                                <option>Engineer</option>
+                                <option>Project Manager</option>
+                                <option>HR Manager</option>
+                                <option>GIS Specialist</option>
+                                <option>Network Administrator</option>
                                 <option>Data Scientist</option>
-                                <option>Chargé de Communication</option>
+                                <option>Communications Officer</option>
                                 <option>Consultant</option>
+
                         </select>
                     </div>
                    
@@ -74,64 +74,41 @@
                         <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
                     </div>
                     <div>
-                        <label for="formFile" class="form-label mt-4">Default file input example</label>
+                        <label for="formFile" class="form-label mt-4">Your CV</label>
                         <input class="form-control" type="file" id="formFile">
                     </div>
                     <fieldset>
-                        <legend class="mt-4">Radio buttons</legend>
+                        <legend class="mt-4">Sexe</legend>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
                             <label class="form-check-label" for="optionsRadios1">
-                                Option one is this and that—be sure to include why it's great
+                                Male
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                             <label class="form-check-label" for="optionsRadios2">
-                                Option two can be something else and selecting it will deselect option one
+                                Female
                             </label>
                         </div>
-                        <div class="form-check disabled">
-                            <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
-                            <label class="form-check-label" for="optionsRadios3">
-                                Option three is disabled
-                            </label>
-                        </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <label class="form-check-label" for="optionsRadios2">
+                                    Other
+                                </label>
+                            </div>
+                        
+                    
                     </fieldset>
                     <fieldset>
-                        <legend class="mt-4">Checkboxes</legend>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Default checkbox
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
-                            <label class="form-check-label" for="flexCheckChecked">
-                                Checked checkbox
-                            </label>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend class="mt-4">Switches</legend>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend class="mt-4">Ranges</legend>
-                        <label for="customRange1" class="form-label">Example range</label>
+                            <legend class="mt-4">Languages</legend>
+                        <label for="customRange1" class="form-label">Arabic</label>
                         <input type="range" class="form-range" id="customRange1">
-                        <label for="disabledRange" class="form-label">Disabled range</label>
-                        <input type="range" class="form-range" id="disabledRange" disabled="">
-                        <label for="customRange3" class="form-label">Example range</label>
-                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+                            <label for="customRange2" class="form-label">English</label>
+                            <input type="range" class="form-range" id="customRange2">
+                        <label for="customRange3" class="form-label">Frensh</label>
+                            <input type="range" class="form-range" id="customRange3">
+            
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </fieldset>
