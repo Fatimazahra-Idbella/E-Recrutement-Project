@@ -7,80 +7,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - Recruitment Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <title>Cranbery - Build Your Career</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #F0F6FF;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background-color: transparent;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+            .logo span {
+                color: #7C3AED;
+            }
+
+        
+
+        nav a {
+            
+            text-decoration: none;
+            color: #555;
+        }
+
+            nav a.active {
+                color: #7C3AED;
+            }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 80px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+            .hero-text h1 span {
+                color: #7C3AED;
+                text-decoration: underline;
+            }
+
+        .hero-text p {
+            color: #;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: #7C3AED;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            color: #111827;
+            text-decoration: none;
+        }
+
+            .btn-secondary i {
+                margin-right: 8px;
+            }
+
+        .courses {
+            padding: 50px 80px;
+        }
+
+            .courses h2 {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+
+        .course-grid {
+            display: flex;
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            width: 250px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .course-card img {
+                width: 40px;
+                margin-bottom: 10px;
+            }
+
+            .course-card h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .course-card p {
+                color: #6B7280;
+                font-size: 14px;
+            }
+
+        .hero-title {
+            color: #FFFFFF; 
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+            padding: 20px;
+        }
+
+            .card img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px 8px 0 0;
+            }
+
+            .card h2 {
+                color: darkslateblue;
+                margin: 15px 0;
+            }
+
+            .card p {
+                color: #555;
+                line-height: 1.6;
+            }
+    </style>
 </head>
 <body>
-    <header class="bg-primary text-white text-center py-5">
-        <h1>Welcome to Our Recruitment Platform</h1>
-        <p>Your dream job is just a few clicks away!</p>
-    </header>
+   
 
-    <main class="container my-5">
-        <!-- Hero Section -->
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <h2>Find Your Perfect Job</h2>
-                <p>We connect talented individuals with leading companies. Explore thousands of opportunities tailored to your skills and ambitions.</p>
-                <a href="/Jobs" class="btn btn-primary">Explore Jobs</a>
-            </div>
-            <div class="col-md-6">
-                <img src="https://via.placeholder.com/500x300" alt="Job search illustration" class="img-fluid rounded">
-            </div>
+    <section class="hero">
+        <div class="hero-text">
+            <h1 class="hero-title">Get your dream job fast and build your <span>career</span></h1>
+            <p>Unlock endless opportunities and take the first step toward a successful and fulfilling career.</p>
+            <a href="#" class="btn-primary">Search jobs →</a>
+            <a href="#" type="button" class="btn btn-info"></i> How to apply</a>
+        </div>
+        <div class="hero-image">
+            <img src="@Url.Content("~/images/Contact us concept.jpg")" alt="Hero Image" class="img-fluid rounded shadow" style="max-width: 500px;border-radius: 80px;" />
+        </div>
+    </section>
+
+    <div class="cards-container">
+        <!-- Students Card -->
+        <div class="card">
+            <img src="~/images/card1 (2).jpg" alt="Students">
+            <h2>Students</h2>
+            <p>
+                We offer young students the opportunity to explore the corporate world through tailored internship programs that match various specialties and education levels.
+            </p>
         </div>
 
-        <!-- Features Section -->
-        <section class="my-5">
-            <h2 class="text-center mb-4">Why Choose Us?</h2>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" alt="Feature 1" class="mb-3">
-                    <h4>Wide Job Selection</h4>
-                    <p>Discover opportunities across various industries and roles.</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" alt="Feature 2" class="mb-3">
-                    <h4>Trusted Employers</h4>
-                    <p>We work with reputable companies to ensure a reliable job search experience.</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="https://via.placeholder.com/150" alt="Feature 3" class="mb-3">
-                    <h4>User-Friendly Platform</h4>
-                    <p>Easily navigate and apply for jobs with our intuitive interface.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="my-5 bg-light p-4 rounded">
-            <h2 class="text-center mb-4">What Our Users Say</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <blockquote class="blockquote">
-                        <p>"This platform helped me land my dream job in less than a month!"</p>
-                        <footer class="blockquote-footer">Jane Doe, Marketing Specialist</footer>
-                    </blockquote>
-                </div>
-                <div class="col-md-6">
-                    <blockquote class="blockquote">
-                        <p>"The process was seamless and stress-free. Highly recommend it!"</p>
-                        <footer class="blockquote-footer">John Smith, Software Engineer</footer>
-                    </blockquote>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action Section -->
-        <div class="text-center my-5">
-            <h2>Ready to Start Your Journey?</h2>
-            <a href="/Register" class="btn btn-success">Sign Up Now</a>
+        <!-- Young Graduates Card -->
+        <div class="card">
+            <img src="~/images/card2 (2).jpg" alt="Young Graduates">
+            <br />
+            <h2>Young Graduates</h2>
+            <p>
+                We recruit young graduates through planned campaigns announced on our website. We provide them with a rich and empowering environment to reveal their talents.
+            </p>
         </div>
-    </main>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Recruitment Platform. All Rights Reserved.</p>
-    </footer>
+        <!-- Experienced Profiles Card -->
+        <div class="card">
+            <img src="~/images/card3.jpg" alt="Experienced Profiles">
+            <h2>Experienced Profiles</h2>
+            <p>
+                We offer experienced professionals a mutually enriching experience by providing challenges that match their ambitions.
+            </p>
+        </div>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
+

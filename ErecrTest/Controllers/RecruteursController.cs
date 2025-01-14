@@ -54,13 +54,13 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
+        public IActionResult Create([Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(recruteur);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                _context.SaveChanges();
+                return RedirectToAction("Recruteurs");
             }
             return View(recruteur);
         }
@@ -111,7 +111,7 @@ namespace ErecrTest.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Recruteurs");
             }
             return View(recruteur);
         }
