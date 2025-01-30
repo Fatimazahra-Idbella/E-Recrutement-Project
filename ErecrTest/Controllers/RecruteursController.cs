@@ -44,9 +44,10 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Recruteurs/Create
-        public IActionResult Create()
+        public ActionResult Create()
         {
-            return View();
+            Recruteur newRecruteur = new Recruteur();
+            return View("Create", newRecruteur);
         }
 
         // POST: Recruteurs/Create
@@ -54,15 +55,15 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
+        public ActionResult Create([Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(recruteur);
                 _context.SaveChanges();
-                return RedirectToAction("Recruteurs");
+                return RedirectToAction("Index");
             }
-            return View(recruteur);
+            return View("Create", recruteur);
         }
 
         // GET: Recruteurs/Edit/5
@@ -153,5 +154,33 @@ namespace ErecrTest.Controllers
         {
             return _context.Recruteurs.Any(e => e.Id == id);
         }
+        public IActionResult Statistics()
+        {
+            var recruiterId = 1; // Replace with actual logged-in recruiter ID
+
+            var recruiter = _context.Recruteurs
+                .Include(r => r.Offres)
+                .ThenInclude(o => o.Candidatures)
+                .FirstOrDefault(r => r.Id == recruiterId);
+
+            if (recruiter == null)
+            {
+                return NotFound();
+            }
+
+            var totalOffers = recruiter.Offres.Count;
+            var totalApplications = recruiter.Offres.Sum(o => o.Candidatures.Count);
+            var averageApplicationsPerOffer = totalOffers > 0 ? totalApplications / (double)totalOffers : 0;
+
+            var model = new RecruiterStatisticsViewModel
+            {
+                TotalOffers = totalOffers,
+                TotalApplications = totalApplications,
+                AverageApplicationsPerOffer = averageApplicationsPerOffer
+            };
+
+            return View(model);
+        }
+
     }
 }
