@@ -63,3 +63,100 @@
 }
     </tbody>
 </table>
+@{
+    ViewData["Title"] = "Available Job Offers";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h2>Available Job Offers</h2>
+        </div>
+
+        <div class="card-body">
+            <!-- Search Section -->
+            <form method="get" action="@Url.Action("Index")">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="sector" class="form-label">Sector</label>
+                        <select id="sector" name="sector" class="form-select">
+                            <option value="">All Sectors</option>
+                            <option value="IT">IT</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Engineering">Engineering</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="profile" class="form-label">Profile</label>
+                        <select id="profile" name="profile" class="form-select">
+                            <option value="">All Profiles</option>
+                            <option value="Deug">DEUG</option>
+                            <option value="Licence">Licence</option>
+                            <option value="Master">Master</option>
+                            <option value="Engineer">Engineer</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="salary" class="form-label">Minimum Salary (€)</label>
+                        <input type="number" id="salary" name="salary" class="form-control" placeholder="Enter salary">
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-success">🔍 Search</button>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">🔄 Reset</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Job Offers List -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Position</th>
+                        <th>Contract Type</th>
+                        <th>Sector</th>
+                        <th>Profile</th>
+                        <th>Salary (€)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var offer in Model)
+                        {
+                            <tr>
+                                <td>@offer.Id</td>
+                                <td>@offer.Poste</td>
+                                <td>@offer.TypeContrat</td>
+                                <td>@offer.Secteur</td>
+                                <td>@offer.Profil</td>
+                                <td>@offer.Remuneration</td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">🔍 View</a>
+                                    <a asp-action="Apply" asp-route-id="@offer.Id" class="btn btn-success">📩 Apply</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">No job offers available</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-dark">🏠 Back to Home</a>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ErecrTest.Models.Recruteur>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Recuiter Space";
 }
 
 <h1>Index</h1>
@@ -45,3 +45,65 @@
 }
     </tbody>
 </table>
+@{
+    ViewData["Title"] = "Recruiter Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h2>Recruiter Dashboard</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Manage Job Offers -->
+                <div class="col-md-6 mb-3">
+                    <div class="card border-secondary">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">📌 Manage Job Offers</h5>
+                            <p class="card-text">Add, edit, or delete your job postings.</p>
+                            <a asp-controller="Offres" asp-action="Index" class="btn btn-primary">Manage Offers</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View Candidates & CVs -->
+                <div class="col-md-6 mb-3">
+                    <div class="card border-success">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">📄 View Candidates & CVs</h5>
+                            <p class="card-text">Check applicants and review their CVs.</p>
+                            <a asp-controller="Candidats" asp-action="Index" class="btn btn-success">View Candidates</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Application Statistics -->
+                <div class="col-md-6 mb-3">
+                    <div class="card border-warning">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">📊 Application Statistics</h5>
+                            <p class="card-text">Analyze your job application data.</p>
+                            <a asp-controller="Statistics" asp-action="Index" class="btn btn-warning">View Statistics</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Browse Other Recruiters' Offers -->
+                <div class="col-md-6 mb-3">
+                    <div class="card border-info">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">🌎 Browse Other Job Offers</h5>
+                            <p class="card-text">See job postings from other recruiters.</p>
+                            <a asp-controller="Offres" asp-action="AllOffers" class="btn btn-info">Browse Offers</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-center">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-dark">🏠 Back to Home</a>
+        </div>
+    </div>
+</div>
