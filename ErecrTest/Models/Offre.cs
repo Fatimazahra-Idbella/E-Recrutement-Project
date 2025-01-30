@@ -12,5 +12,12 @@ using System.ComponentModel.DataAnnotations.Schema;
         public List<Candidature> Candidatures { get; set; }
         [ForeignKey("RecruteurId")] 
         public Recruteur Recruteur { get; set; }
-    }
+    
+}
+
+
+
+
+
+
 

@@ -69,3 +69,65 @@
 }
     </tbody>
 </table>
+@{
+    ViewData["Title"] = "Candidate Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+            <h2>Candidate Dashboard</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Browse All Job Offers -->
+                <div class="col-md-6 mb-3">
+                    <div class="card border-secondary">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">🌍 Browse Job Offers</h5>
+                            <p class="card-text">Explore all available job opportunities.</p>
+                            <a asp-controller="Offres" asp-action="Index" class="btn btn-primary">View Offers</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search for Jobs -->
+                <div class="col-md-6 mb-3">
+                    <div class="card border-info">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">🔍 Search for Jobs</h5>
+                            <p class="card-text">Find jobs that match your skills and preferences.</p>
+                            <a asp-controller="Offres" asp-action="Search" class="btn btn-info">Search Jobs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apply for a Job -->
+                <div class="col-md-6 mb-3">
+                    <div class="card border-success">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">📩 Apply for a Job</h5>
+                            <p class="card-text">Submit your application for your dream job.</p>
+                            <a asp-controller="Candidats" asp-action="Create" class="btn btn-success">How to Apply</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View Application History -->
+                <div class="col-md-6 mb-3">
+                    <div class="card border-warning">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">📜 Application History</h5>
+                            <p class="card-text">Review the jobs you have applied for.</p>
+                            <a asp-controller="Candidats" asp-action="CandidateHistory" class="btn btn-warning">View History</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-center">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-dark">🏠 Back to Home</a>
+        </div>
+    </div>
+</div>

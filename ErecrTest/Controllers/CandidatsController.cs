@@ -153,5 +153,13 @@ namespace ErecrTest.Controllers
         {
             return _context.Candidat.Any(e => e.Id == id);
         }
+        public IActionResult HowToApply()
+        {
+            return View();
+        }
+        public IActionResult CandidateHistory()
+        {
+            return View();
+        }
     }
 }
