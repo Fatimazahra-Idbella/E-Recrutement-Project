@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ErecrTest.DATA;
 using ErecrTest.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ErecrTest.Controllers
 {
@@ -26,6 +27,7 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Recruteurs/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +46,7 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Recruteurs/Create
+        [Authorize]
         public ActionResult Create()
         {
             Recruteur newRecruteur = new Recruteur();
@@ -55,6 +58,7 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
         {
             if (ModelState.IsValid)
@@ -67,6 +71,7 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Recruteurs/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,6 +92,7 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
         {
             if (id != recruteur.Id)
@@ -118,6 +124,7 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Recruteurs/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,6 +143,7 @@ namespace ErecrTest.Controllers
         }
 
         // POST: Recruteurs/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -154,6 +162,7 @@ namespace ErecrTest.Controllers
         {
             return _context.Recruteurs.Any(e => e.Id == id);
         }
+        [Authorize]
         public IActionResult Statistics()
         {
             var recruiterId = 1; // Replace with actual logged-in recruiter ID
