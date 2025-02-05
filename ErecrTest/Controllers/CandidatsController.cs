@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ErecrTest.DATA;
 using ErecrTest.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ErecrTest.Controllers
 {
@@ -26,6 +27,7 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Candidats/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +46,7 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Candidats/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +57,7 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Nom,Prenom,Age,Titre,Diplome,AnneeExperience,CV")] Candidat candidat)
         {
             if (ModelState.IsValid)
@@ -66,6 +70,7 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Candidats/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +91,7 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Prenom,Age,Titre,Diplome,AnneeExperience,CV")] Candidat candidat)
         {
             if (id != candidat.Id)
@@ -117,6 +123,7 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Candidats/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +142,7 @@ namespace ErecrTest.Controllers
         }
 
         // POST: Candidats/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -157,13 +165,12 @@ namespace ErecrTest.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
+
         public IActionResult CandidateHistory()
         {
             return View();
         }
-=======
 
->>>>>>> dbe9f9b172082917af74b0d871ba28919de1fe98
+
     }
 }
