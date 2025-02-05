@@ -157,9 +157,13 @@ namespace ErecrTest.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
         public IActionResult CandidateHistory()
         {
             return View();
         }
+=======
+
+>>>>>>> dbe9f9b172082917af74b0d871ba28919de1fe98
     }
 }
