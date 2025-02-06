@@ -4,14 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="text-center my-4">
+    <h1 class="display-4">Find Your Dream Job</h1>
+    <p class="lead">Discover exciting opportunities and apply for the perfect job that matches your skills.</p>
+    <a asp-action="Create" class="btn btn-success btn-lg">Apply Now</a>
+	<hr>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="table-primary">
             <th>
                 @Html.DisplayNameFor(model => model.Nom)
             </th>
@@ -60,11 +62,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CV)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CandidatId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.CandidatId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.CandidatId">Delete</a>
-            </td>
+                <td>
+                    
+                    <a asp-action="Edit" asp-route-id="@item.CandidatId" class="btn btn-success btn-sm">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.CandidatId" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.CandidatId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
         </tr>
 }
     </tbody>
