@@ -19,14 +19,14 @@ namespace ErecrTest.DATA
                 .HasData(
                 new Recruteur
                 {
-                    Id = 1,
+                    RecruteurId = 1,
                     Nom = "venus",
                     Tel = "123456789",
                     Email = "fatiezzahra@gmail.com",
                 },
                 new Recruteur
                 {
-                    Id = 2,
+                    RecruteurId = 2,
                     Nom = "Mr Somebody",
                     Tel = "987654321",
                     Email = "mrsomebody@gmail.com",

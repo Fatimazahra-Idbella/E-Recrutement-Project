@@ -36,7 +36,7 @@ namespace ErecrTest.Controllers
             }
 
             var candidat = await _context.Candidat
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CandidatId == id);
             if (candidat == null)
             {
                 return NotFound();
@@ -94,7 +94,7 @@ namespace ErecrTest.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Prenom,Age,Titre,Diplome,AnneeExperience,CV")] Candidat candidat)
         {
-            if (id != candidat.Id)
+            if (id != candidat.CandidatId)
             {
                 return NotFound();
             }
@@ -108,7 +108,7 @@ namespace ErecrTest.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CandidatExists(candidat.Id))
+                    if (!CandidatExists(candidat.CandidatId))
                     {
                         return NotFound();
                     }
@@ -132,7 +132,7 @@ namespace ErecrTest.Controllers
             }
 
             var candidat = await _context.Candidat
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.    CandidatId == id);
             if (candidat == null)
             {
                 return NotFound();
@@ -159,7 +159,7 @@ namespace ErecrTest.Controllers
 
         private bool CandidatExists(int id)
         {
-            return _context.Candidat.Any(e => e.Id == id);
+            return _context.Candidat.Any(e => e.CandidatId == id);
         }
         public IActionResult HowToApply()
         {

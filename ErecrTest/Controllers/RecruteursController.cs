@@ -36,7 +36,7 @@ namespace ErecrTest.Controllers
             }
 
             var recruteur = await _context.Recruteurs
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.RecruteurId == id);
             if (recruteur == null)
             {
                 return NotFound();
@@ -72,6 +72,7 @@ namespace ErecrTest.Controllers
 
         // GET: Recruteurs/Edit/5
         [Authorize]
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,7 +96,7 @@ namespace ErecrTest.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
         {
-            if (id != recruteur.Id)
+            if (id != recruteur.RecruteurId)
             {
                 return NotFound();
             }
@@ -109,7 +110,7 @@ namespace ErecrTest.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RecruteurExists(recruteur.Id))
+                    if (!RecruteurExists(recruteur.RecruteurId))
                     {
                         return NotFound();
                     }
@@ -133,7 +134,7 @@ namespace ErecrTest.Controllers
             }
 
             var recruteur = await _context.Recruteurs
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.RecruteurId == id);
             if (recruteur == null)
             {
                 return NotFound();
@@ -160,7 +161,7 @@ namespace ErecrTest.Controllers
 
         private bool RecruteurExists(int id)
         {
-            return _context.Recruteurs.Any(e => e.Id == id);
+            return _context.Recruteurs.Any(e => e.RecruteurId == id);
         }
         [Authorize]
         public IActionResult Statistics()
@@ -170,7 +171,7 @@ namespace ErecrTest.Controllers
             var recruiter = _context.Recruteurs
                 .Include(r => r.Offres)
                 .ThenInclude(o => o.Candidatures)
-                .FirstOrDefault(r => r.Id == recruiterId);
+                .FirstOrDefault(r => r.RecruteurId == recruiterId);
 
             if (recruiter == null)
             {

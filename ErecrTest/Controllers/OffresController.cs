@@ -36,7 +36,7 @@ namespace ErecrTest.Controllers
 
             var offre = await _context.Offres
                 .Include(o => o.Recruteur)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.OffreId == id);
             if (offre == null)
             {
                 return NotFound();
@@ -93,7 +93,7 @@ namespace ErecrTest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,RecruteurId,TypeContrat,Secteur,Profil,Poste,Remuneration")] Offre offre)
         {
-            if (id != offre.Id)
+            if (id != offre.RecruteurId)
             {
                 return NotFound();
             }
@@ -107,7 +107,7 @@ namespace ErecrTest.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OffreExists(offre.Id))
+                    if (!OffreExists(offre.OffreId))
                     {
                         return NotFound();
                     }
@@ -132,7 +132,7 @@ namespace ErecrTest.Controllers
 
             var offre = await _context.Offres
                 .Include(o => o.Recruteur)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.RecruteurId == id);
             if (offre == null)
             {
                 return NotFound();
@@ -158,7 +158,7 @@ namespace ErecrTest.Controllers
 
         private bool OffreExists(int id)
         {
-            return _context.Offres.Any(e => e.Id == id);
+            return _context.Offres.Any(e => e.OffreId == id);
         }
     }
 }
