@@ -58,15 +58,14 @@ namespace ErecrTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Nom,Prenom,Age,Titre,Diplome,AnneeExperience,CV")] Candidat candidat)
+        public IActionResult Create(Candidat candidat)
         {
-            if (ModelState.IsValid)
-            {
+            
                 _context.Add(candidat);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(candidat);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            
+            
         }
 
         // GET: Candidats/Edit/5

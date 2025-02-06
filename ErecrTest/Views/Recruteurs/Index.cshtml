@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
              <td>
-                    <a asp-action="Edit" asp-route-id="@item.RecruteurId" class="btn btn-success btn-sm">Edit</a>
+                    <a asp-controller="Recruteur" asp-action="Edit" asp-route-id="@item.RecruteurId" class="btn btn-success btn-sm">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.RecruteurId" class="btn btn-info btn-sm">Details</a>
                     <a asp-action="Delete" asp-route-id="@item.RecruteurId" class="btn btn-danger btn-sm">Delete</a>
              </td>
@@ -69,7 +69,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">📌 Manage Job Offers</h5>
                             <p class="card-text">Add, edit, or delete your job postings.</p>
-                            <a asp-controller="Recruteurs" asp-action="Index" class="btn btn-primary">Manage Offers</a>
+                            <a asp-controller="Recruteurs" asp-action="Index" class="btn btn-secondary">Manage Offers</a>
                         </div>
                     </div>
                 </div>

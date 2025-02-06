@@ -49,8 +49,8 @@ namespace ErecrTest.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            Recruteur newRecruteur = new Recruteur();
-            return View("Create", newRecruteur);
+            
+            return View();
         }
 
         // POST: Recruteurs/Create
@@ -59,33 +59,31 @@ namespace ErecrTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
+        public ActionResult Create(Recruteur recruteur)
         {
-            if (ModelState.IsValid)
-            {
+           
                 _context.Add(recruteur);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            return View("Create", recruteur);
+           
+           
         }
 
         // GET: Recruteurs/Edit/5
         [Authorize]
 
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int RecruteurId)
         {
-            if (id == null)
+            if (RecruteurId == null || RecruteurId == 0)
             {
                 return NotFound();
             }
-
-            var recruteur = await _context.Recruteurs.FindAsync(id);
+            Recruteur recruteur = _context.Recruteurs.Find(RecruteurId);
             if (recruteur == null)
             {
                 return NotFound();
             }
-            return View(recruteur);
+            return View();
         }
 
         // POST: Recruteurs/Edit/5
@@ -94,35 +92,20 @@ namespace ErecrTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Tel,Email")] Recruteur recruteur)
+        
+        public IActionResult Edit(Recruteur recruteur)
         {
-            if (id != recruteur.RecruteurId)
-            {
-                return NotFound();
-            }
-
+            
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(recruteur);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RecruteurExists(recruteur.RecruteurId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction("Recruteurs");
+              
+                    _context.Recruteurs.Update(recruteur);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
             }
-            return View(recruteur);
+            return View();
         }
+
 
         // GET: Recruteurs/Delete/5
         [Authorize]
