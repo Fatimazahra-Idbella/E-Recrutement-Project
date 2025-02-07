@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ErecrTest.DATA;
 using ErecrTest.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ErecrTest.Controllers
 {
@@ -48,7 +49,7 @@ namespace ErecrTest.Controllers
         // GET: Offres/Create
         public IActionResult Create()
         {
-            ViewData["RecruteurId"] = new SelectList(_context.Recruteurs, "Id", "Id");
+          
             return View();
         }
 
@@ -57,16 +58,20 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RecruteurId,TypeContrat,Secteur,Profil,Poste,Remuneration")] Offre offre)
+        public IActionResult Create(Offre offre)
         {
-            if (ModelState.IsValid)
+              if (ModelState.IsValid)
             {
-                _context.Add(offre);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                
+                offre.Candidatures = new List<Candidature>(); // Assurez-vous que ce champ est initialisé
+
+                _context.Offres.Add(offre);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
             }
-            ViewData["RecruteurId"] = new SelectList(_context.Recruteurs, "Id", "Id", offre.RecruteurId);
             return View(offre);
+      
+           
         }
 
         // GET: Offres/Edit/5
@@ -159,6 +164,39 @@ namespace ErecrTest.Controllers
         private bool OffreExists(int id)
         {
             return _context.Offres.Any(e => e.OffreId == id);
+
         }
+            // Action pour afficher la liste des offres avec la possibilité de filtrer
+            public IActionResult Listeoffres(string secteur, string profil, decimal? minRemuneration, decimal? maxRemuneration)
+            {
+                // Filtrer les offres selon les critères de recherche
+                var offres = _context.Offres.AsQueryable();
+
+                if (!string.IsNullOrEmpty(secteur))
+                {
+                    offres = offres.Where(o => o.Secteur.Contains(secteur));
+                }
+
+                if (!string.IsNullOrEmpty(profil))
+                {
+                    offres = offres.Where(o => o.Profil.Contains(profil));
+                }
+
+                if (minRemuneration.HasValue)
+                {
+                    offres = offres.Where(o => o.Remuneration >= minRemuneration.Value);
+                }
+
+                if (maxRemuneration.HasValue)
+                {
+                    offres = offres.Where(o => o.Remuneration <= maxRemuneration.Value);
+                }
+
+                // Retourner la liste des offres filtrées
+                return View(offres.ToList());
+            }
+        }
+
     }
-}
+    
+

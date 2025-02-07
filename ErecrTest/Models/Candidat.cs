@@ -18,7 +18,7 @@ namespace ErecrTest.Models
         public string Diplome { get; set; }
         [Required]
         public int AnneeExperience { get; set; }
-        [Required]
+        
         public string CV { get; set; }
         public List<Candidature> Candidatures { get; set; }
     }

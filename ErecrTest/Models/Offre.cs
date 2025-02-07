@@ -12,9 +12,10 @@ using System.ComponentModel.DataAnnotations.Schema;
         public string Profil { get; set; }
         public string Poste { get; set; }
         public decimal Remuneration { get; set; }
-        public List<Candidature> Candidatures { get; set; }
-       
-    
+
+    public List<Candidature> Candidatures { get; set; }
+
+
 }
 
 

@@ -83,7 +83,7 @@ namespace ErecrTest.Controllers
             {
                 return NotFound();
             }
-            return View();
+            return View(recruteur);
         }
 
         // POST: Recruteurs/Edit/5
@@ -92,19 +92,21 @@ namespace ErecrTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        
+
         public IActionResult Edit(Recruteur recruteur)
         {
-            
+
             if (ModelState.IsValid)
             {
-              
-                    _context.Recruteurs.Update(recruteur);
-                    _context.SaveChanges();
-                    return RedirectToAction("Index");
+
+                _context.Recruteurs.Update(recruteur);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View();
         }
+
+
 
 
         // GET: Recruteurs/Delete/5

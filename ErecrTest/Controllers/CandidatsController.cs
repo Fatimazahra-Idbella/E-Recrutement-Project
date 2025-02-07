@@ -60,11 +60,13 @@ namespace ErecrTest.Controllers
         [Authorize]
         public IActionResult Create(Candidat candidat)
         {
-            
-                _context.Add(candidat);
+            if (ModelState.IsValid)
+            {
+                _context.Candidats.Add(candidat);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-            
+            }
+            return View(candidat);
             
         }
 

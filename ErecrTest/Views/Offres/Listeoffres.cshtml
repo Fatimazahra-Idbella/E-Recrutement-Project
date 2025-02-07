@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<ErecrTest.Models.Offre>
+
+@{
+    ViewData["Title"] = "Job Offers List";
+}
+
+<h2>Job Offers List</h2>
+
+<!-- Filtering Form -->
+<form method="get" asp-action="Listeoffres">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Sector</label>
+            <input type="text" name="secteur" class="form-control" placeholder="Sector" value="@Context.Request.Query["secteur"]">
+        </div>
+
+        <div class="col-md-3">
+            <label>Profile</label>
+            <input type="text" name="profil" class="form-control" placeholder="Profile" value="@Context.Request.Query["profil"]">
+        </div>
+
+        <div class="col-md-2">
+            <label>Min Salary</label>
+            <input type="number" name="minRemuneration" class="form-control" placeholder="Min" value="@Context.Request.Query["minRemuneration"]">
+        </div>
+
+        <div class="col-md-2">
+            <label>Max Salary</label>
+            <input type="number" name="maxRemuneration" class="form-control" placeholder="Max" value="@Context.Request.Query["maxRemuneration"]">
+        </div>
+
+        <div class="col-md-2 align-self-end">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a asp-action="Listeoffres" class="btn btn-secondary">Reset</a>
+        </div>
+    </div>
+</form>
+
+<br />
+
+<!-- Job Offers Table -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Contract Type</th>
+            <th>Sector</th>
+            <th>Profile</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var offer in Model)
+        {
+            <tr>
+                <td>@offer.TypeContrat</td>
+                <td>@offer.Secteur</td>
+                <td>@offer.Profil</td>
+                <td>@offer.Poste</td>
+                <td>@offer.Remuneration.ToString("N2")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@offer.OffreId" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="Edit" asp-route-id="@offer.OffreId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@offer.OffreId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this offer?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
