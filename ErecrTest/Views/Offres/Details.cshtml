@@ -3,3 +3,77 @@
 *@
 @{
 }
+@model ErecrTest.Models.Offre
+
+@{
+    ViewData["Title"] = "Offer Details";
+}
+
+<h1>Offer Details</h1>
+
+<div>
+    <h4>Offer Information</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeContrat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeContrat)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Secteur)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Secteur)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Profil)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Profil)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Poste)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Poste)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Remuneration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Remuneration) $
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Recruteur.Nom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recruteur.Nom)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Recruteur.Tel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recruteur.Tel)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Recruteur.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Recruteur.Email)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.OffreId" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

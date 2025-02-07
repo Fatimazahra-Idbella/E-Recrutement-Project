@@ -3,3 +3,61 @@
 *@
 @{
 }
+@model ErecrTest.Models.Offre
+
+@{
+    ViewData["Title"] = "Edit Offer";
+}
+
+<h1>Edit Offer</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <input type="hidden" asp-for="OffreId" />
+
+            <div class="form-group">
+                <label asp-for="TypeContrat" class="control-label"></label>
+                <input asp-for="TypeContrat" class="form-control" />
+                <span asp-validation-for="TypeContrat" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Secteur" class="control-label"></label>
+                <input asp-for="Secteur" class="form-control" />
+                <span asp-validation-for="Secteur" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Profil" class="control-label"></label>
+                <input asp-for="Profil" class="form-control" />
+                <span asp-validation-for="Profil" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Poste" class="control-label"></label>
+                <input asp-for="Poste" class="form-control" />
+                <span asp-validation-for="Poste" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Remuneration" class="control-label"></label>
+                <input asp-for="Remuneration" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Remuneration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
