@@ -3,101 +3,28 @@
 *@
 @{
 }
+@model ErecrTest.Models.Candidat
+
 @{
     ViewData["Title"] = "Candidate History";
 }
 
-    <div class="container mt-5">
-        <h2 class="text-center text-info mb-4">
-            <i class="fas fa-history"></i> Candidate's Application History
-        </h2>
+<h2>Application History </h2>
 
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered shadow-lg">
-                <thead class="bg-dark text-white">
-                    <tr>
-                        <th>ID</th>
-                        <th>Offer Title</th>
-                        <th>Company</th>
-                        <th>Sector</th>
-                        <th>Application Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="candidature in candidatures" :key="candidature.id">
-                        <td>{{ candidature.id }}</td>
-                        <td>
-                            <i class="fas fa-briefcase"></i> {{ candidature.offerTitle }}
-                        </td>
-                        <td>
-                            <i class="fas fa-building"></i> {{ candidature.company }}
-                        </td>
-                        <td>{{ candidature.sector }}</td>
-                        <td>
-                            <i class="fas fa-calendar-alt"></i> {{ formatDate(candidature.date) }}
-                        </td>
-                        <td>
-                            <span class="badge" :class="getStatusClass(candidature.status)">
-                                {{ candidature.status }}
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<table class="table table-striped">
+    <thead class="table-primary">
+        <tr>
+            <th>Job Position</th>
+            <th>Sector</th>
+            <th>Contract Type</th>
+            <th>Salary</th>
+            <th>Application Date</th>
+            <th>Uploaded CV</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
 
-
-<script>
-    export default {
-      data() {
-        return {
-          candidatures: [
-            { id: 1, offerTitle: "Software Engineer", company: "Google", sector: "IT", date: "2024-01-15", status: "Accepted" },
-            { id: 2, offerTitle: "Financial Analyst", company: "Goldman Sachs", sector: "Finance", date: "2023-11-20", status: "Pending" },
-            { id: 3, offerTitle: "Marketing Manager", company: "Apple", sector: "Marketing", date: "2023-10-05", status: "Rejected" }
-          ]
-        };
-      },
-      methods: {
-        formatDate(date) {
-          return new Date(date).toLocaleDateString();
-        },
-        getStatusClass(status) {
-          return {
-            "bg-success text-white p-2 rounded": status === "Accepted",
-            "bg-warning text-dark p-2 rounded": status === "Pending",
-            "bg-danger text-white p-2 rounded": status === "Rejected"
-          };
-        }
-      }
-    };
-</script>
-
-<style scoped>
-    .container {
-        max-width: 1000px;
-    }
-
-    .table {
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    .table-hover tbody tr:hover {
-        background-color: rgba(0, 123, 255, 0.1);
-    }
-
-    h2 {
-        font-weight: bold;
-    }
-
-    .badge {
-        font-size: 14px;
-    }
-
-    .shadow-lg {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-</style>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
