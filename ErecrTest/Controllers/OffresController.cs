@@ -107,20 +107,38 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Offre offre)
+        
+        public async Task<IActionResult> Edit(int id, [Bind("OffreId, RecruteurId, TypeContrat, Secteur, Profil, Poste, Remuneration")] Offre offre)
         {
-            
-            
-            
-
-            if (ModelState.IsValid)
+            if (id != offre.OffreId)
             {
-                _context.Offres.Update(offre);
-                _context.SaveChanges();
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(offre);
+            }
+
+            try
+            {
+                _context.Update(offre);
+                await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            else return View();
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Offres.Any(o => o.OffreId == offre.OffreId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
+
 
         // GET: Offres/Delete/5
         public async Task<IActionResult> Delete(int? id)
