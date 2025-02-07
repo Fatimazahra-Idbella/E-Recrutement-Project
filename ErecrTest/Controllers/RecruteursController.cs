@@ -61,24 +61,25 @@ namespace ErecrTest.Controllers
         [Authorize]
         public ActionResult Create(Recruteur recruteur)
         {
-           
-                _context.Add(recruteur);
+           _context.Recruteurs.Add(recruteur);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-           
-           
-        }
+
+
+            }
+              
+            
 
         // GET: Recruteurs/Edit/5
         [Authorize]
 
-        public IActionResult Edit(int RecruteurId)
+        public IActionResult Edit(int id)
         {
-            if (RecruteurId == null || RecruteurId == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            Recruteur recruteur = _context.Recruteurs.Find(RecruteurId);
+            Recruteur recruteur = _context.Recruteurs.Find(id);
             if (recruteur == null)
             {
                 return NotFound();

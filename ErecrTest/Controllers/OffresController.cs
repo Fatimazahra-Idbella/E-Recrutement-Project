@@ -14,10 +14,13 @@ namespace ErecrTest.Controllers
     public class OffresController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        private UserManager<IdentityUser>? userManager;
 
         public OffresController(ApplicationDbContext context)
         {
             _context = context;
+           
         }
 
         // GET: Offres
@@ -47,32 +50,40 @@ namespace ErecrTest.Controllers
         }
 
         // GET: Offres/Create
+        public ActionResult Create(int id)
+        {
+            return View(new Offre());
+        }
+        [HttpGet]
         public IActionResult Create()
         {
-          
-            return View();
+            var recruteurs = _context.Recruteurs.ToList();
+            ViewBag.Recruteurs = recruteurs; // Assurez-vous que la liste est bien envoyée à la vue
+
+            return View(new Offre());
         }
+
+        
 
         // POST: Offres/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Offre offre)
-        {
-              if (ModelState.IsValid)
-            {
-                
-                offre.Candidatures = new List<Candidature>(); // Assurez-vous que ce champ est initialisé
 
-                _context.Offres.Add(offre);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+        public ActionResult Create(Offre offre)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(offre);
             }
-            return View(offre);
-      
-           
+            _context.Add(offre);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
+
         }
+
 
         // GET: Offres/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -96,35 +107,19 @@ namespace ErecrTest.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RecruteurId,TypeContrat,Secteur,Profil,Poste,Remuneration")] Offre offre)
+        public async Task<IActionResult> Edit(Offre offre)
         {
-            if (id != offre.RecruteurId)
-            {
-                return NotFound();
-            }
+            
+            
+            
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(offre);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OffreExists(offre.OffreId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Offres.Update(offre);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
             }
-            ViewData["RecruteurId"] = new SelectList(_context.Recruteurs, "Id", "Id", offre.RecruteurId);
-            return View(offre);
+            else return View();
         }
 
         // GET: Offres/Delete/5
