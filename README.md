@@ -31,7 +31,7 @@ E-Recrutement is a web-based recruitment platform developed with **ASP.NET Core*
 ## 🛠️ Tech Stack  
 - **Frontend**: Bootstrap  
 - **Backend**: ASP.NET Core  
-- **Database**: (Specify if using SQL Server, MySQL, etc.)  
+- **Database**: SQL Server 
 - **Hosting**: IIS  
 
 ---
